@@ -1,0 +1,52 @@
+scriptId = 'com.thalmic.examples.outputeverything'
+scriptTitle = "Controller"
+scriptDetailsUrl = "" -- We don't have this until it's submitted to the Myo Market
+
+function onPoseEdge(pose, edge)
+	myo.unlock("hold")
+	myo.controlMouse(true)
+    myo.debug("onPoseEdge: " .. pose .. ", " .. edge)
+
+    if(pose == "fingersSpread" and edge == "on") then
+        myo.centerMousePosition()
+
+    elseif(pose == "waveIn" and edge == "on") then
+        myo.keyboard("left_alt", "down")
+        myo.keyboard("left_arrow", "press")
+        myo.keyboard("left_alt", "up")
+
+    elseif(pose == "waveOut" and edge == "on") then
+        myo.keyboard("left_alt", "down")
+        myo.keyboard("right_arrow", "press")
+        myo.keyboard("left_alt", "up")
+
+    elseif(pose == "fist" and edge == "on") then
+        myo.mouse("left", "down")
+
+    elseif(pose == "fist" and edge == "off") then
+        myo.mouse("left", "up")
+
+    elseif(pose == "doubleTable" and edge == "on") then
+        myo.mouse("right", "click")
+    
+    else
+        myo.debug("Wrong")
+    end
+
+end
+
+function onPeriodic()
+end
+
+function onForegroundWindowChange(app, title)
+    myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
+    return true
+end
+
+function activeAppName()
+    return "Controller"
+end
+function
+ onActiveChange(isActive)
+    myo.debug("onActiveChange")
+end

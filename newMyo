@@ -3,33 +3,33 @@ scriptTitle = "HackUMass"
 scriptDetailsUrl = "" -- We don't have this until it's submitted to the Myo Market
 
 function onPoseEdge(pose, edge)
-	myo.unlock("hold")
-	myo.controlMouse(true)
-    myo.debug("onPoseEdge: " .. pose .. ", " .. edge)  
+	myo2.unlock("hold")
+	myo2.controlMouse(true)
+    myo2.debug("onPoseEdge: " .. pose .. ", " .. edge)  
 
     --Spreading fingers centers the mouse on your screen
     if(pose == "fingersSpread" and edge == "on") then
-    	myo.debug("Centered")
-    	myo.centerMousePosition()
+    	myo2.debug("Centered")
+    	myo2.centerMousePosition()
 
     --Making a fist presses the 'r' key
     elseif(pose == "fist" and edge == "on") then
-        myo.keyboard("r", "down")
-        myo.debug("Hold")
+        myo2.keyboard("r", "down")
+        myo2.debug("Hold")
 
     elseif(pose == "fist" and edge == "off") then
-        myo.keyboard("r", "up")
-        myo.debug("Release")
+        myo2.keyboard("r", "up")
+        myo2.debug("Release")
 
     --wavingOut and holding it will hold down the left mouse
     elseif(pose == "waveOut" and edge == "on") then
-    	myo.mouse("left", "down")
+    	myo2.mouse("left", "down")
 
     --finishing your waveOut will release the left mouse
     elseif(pose == "waveOut" and edge == "off") then
-    	myo.mouse("left", "up")
+    	myo2.mouse("left", "up")
     else
-    	myo.debug("else")
+    	myo2.debug("else")
     end
 
 end
@@ -38,7 +38,7 @@ function onPeriodic()
 end
 
 function onForegroundWindowChange(app, title)
-    myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
+    myo2.debug("onForegroundWindowChange: " .. app .. ", " .. title)
     return true
 end
 
@@ -47,5 +47,5 @@ function activeAppName()
 end
 function
  onActiveChange(isActive)
-    myo.debug("onActiveChange")
+    myo2.debug("onActiveChange")
 end
