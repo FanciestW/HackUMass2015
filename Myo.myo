@@ -9,7 +9,7 @@ function onPoseEdge(pose, edge)
 
     --Making a fist opens the tab menu
     if(pose == "fingersSpread" and edge == "on") then
-        myo.keyboard("tab", "press")
+        tab()
         myo.debug("tab")
 
     --clenching a fist can 
@@ -33,6 +33,11 @@ function onPoseEdge(pose, edge)
     	myo.debug("else")
     end
 
+end
+
+function tab()
+    myo.keyboard("tab", "down")
+    myo.keyboard("tab", "up")
 end
 
 function onPeriodic()
