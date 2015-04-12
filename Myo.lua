@@ -6,16 +6,13 @@ function onPoseEdge(pose, edge)
 	myo.unlock("hold")
 	myo.controlMouse(true)
     myo.debug("onPoseEdge: " .. pose .. ", " .. edge)  
-    if(pose == "doubleTab") then
+    if(pose == "fist" and edge == "on") then
+    	myo.debug("Centered")
     	myo.centerMousePosition()
-    elseif(pose == "fist")
-    	
-    	while pose == "fist" and edge == "on" do
-    		myo.mouse(myo.getArm(), "down")
-    	end
-
+    elseif(pose == "fingersSpread" and edge == "on") then
+    	myo.mouse("left", "click")
     else
-    	myo.debug("hello")
+    	myo.debug("else")
     end
 
 end
