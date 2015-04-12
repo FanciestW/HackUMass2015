@@ -7,27 +7,28 @@ function onPoseEdge(pose, edge)
 	myo.controlMouse(true)
     myo.debug("onPoseEdge: " .. pose .. ", " .. edge)  
 
-    --Spreading fingers centers the mouse on your screen
+    --Making a fist opens the tab menu
     if(pose == "fingersSpread" and edge == "on") then
-    	myo.debug("Centered")
-    	myo.centerMousePosition()
+        myo.keyboard("tab", "press")
+        myo.debug("tab")
 
-    --Making a fist presses the 'r' key
+    --clenching a fist can 
     elseif(pose == "fist" and edge == "on") then
-        myo.keyboard("r", "down")
-        myo.debug("Hold")
+        myo.mouse("right", "down")
+        myo.mouse("left", "down")
+        myo.debug("Start Attack")
 
     elseif(pose == "fist" and edge == "off") then
-        myo.keyboard("r", "up")
-        myo.debug("Release")
+        myo.mouse("right", "up")
+        myo.mouse("left", "up")
+        myo.debug("Stop Attack")
 
-    --wavingOut and holding it will hold down the left mouse
     elseif(pose == "waveOut" and edge == "on") then
-    	myo.mouse("left", "down")
+    	myo.keyboard("right_arrow", "press")
 
-    --finishing your waveOut will release the left mouse
-    elseif(pose == "waveOut" and edge == "off") then
-    	myo.mouse("left", "up")
+    elseif(pose == "waveIn" and edge == "on") then
+    	myo.keyboard("left_arrow", "up")
+
     else
     	myo.debug("else")
     end
