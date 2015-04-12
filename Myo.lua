@@ -7,10 +7,12 @@ function onPoseEdge(pose, edge)
 	myo.controlMouse(true)
     myo.debug("onPoseEdge: " .. pose .. ", " .. edge)  
     if(pose == "fist" and edge == "on") then
-    	myo.debug("Centered")
-    	myo.centerMousePosition()
+    	--myo.centerMousePosition()
+    	myo.keyboard("r", "press")
     elseif(pose == "fingersSpread" and edge == "on") then
-    	myo.mouse("left", "click")
+    	--myo.mouse("left", "click")
+    elseif(pose == "waveOut" and edge == "on") then
+    	myo.mouse("right", "down")
     else
     	myo.debug("else")
     end
