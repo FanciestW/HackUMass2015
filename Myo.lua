@@ -4,11 +4,16 @@ scriptDetailsUrl = "" -- We don't have this until it's submitted to the Myo Mark
 
 function onPoseEdge(pose, edge)
 	myo.unlock("hold")
+	myo.controlMouse(true)
     myo.debug("onPoseEdge: " .. pose .. ", " .. edge)  
-    if(pose == "doubleTab" and edge == "off") then
-    	myo.lock()
-    elseif(pose == "fist" and edge == "on") then
-    	myo.mouse("right", "click")
+    if(pose == "doubleTab") then
+    	myo.centerMousePosition()
+    elseif(pose == "fist")
+    	
+    	while pose == "fist" and edge == "on" do
+    		myo.mouse(myo.getArm(), "down")
+    	end
+
     else
     	myo.debug("hello")
     end
